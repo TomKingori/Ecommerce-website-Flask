@@ -1,10 +1,10 @@
 from flask import render_template, session, redirect, request, url_for, flash
-from matplotlib.pyplot import title
 from shop import app, db, bcrypt
 from .forms import RegistrationForm, LoginForm
 from .models import User
 
-@app.route("/admin")
+
+@app.route("/")
 def home():
     return render_template('admin/index.html', title='Admin Page')
 
@@ -21,7 +21,7 @@ def register():
         db.session.add(user)
         db.session.commit()
         flash(f'Thanks for registering {form.name.data}!!', category='success')
-        return redirect(url_for('login'))
+        return redirect(url_for('home'))
     return render_template('admin/register.html', form=form, title='Registration')
 
 @app.route('/login', methods=['GET', 'POST'])
