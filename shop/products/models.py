@@ -1,4 +1,3 @@
-from enum import unique
 from shop import db
 
 class Brand(db.Model):
