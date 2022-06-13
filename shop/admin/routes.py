@@ -32,7 +32,7 @@ def login():
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             session['email'] = form.email.data
             flash(f'Logged in successfully as {form.email.data}', category="success")
-            return redirect(request.args.get('next') or url_for('admin'))
+            return redirect(request.args.get('next') or url_for('home'))
         else:
             flash('Wrong password. Please try again', category="error")
     return render_template('admin/login.html', form=form, title='Login')

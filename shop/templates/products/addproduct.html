@@ -2,30 +2,48 @@
 
 {% block content %}
 <div class="container">
-    <div class="col"></div>
-    <div class="col-8">
-        <h2 class="text-center mt-5">Add a product</h2>
-        {% from "_formhelpers.html" import render_field %}
-        <form action="" method="POST" enctype="multipart/form-data">
-            {{render_field(form.name, class="form-control", placeholder="Add product name")}}
-            {{render_field(form.price, class="form-control", placeholder="Add product price")}}
-            {{render_field(form.discount, class="form-control", placeholder="Add product discount")}}
-            {{render_field(form.stock, class="form-control", placeholder="Add product stock")}}
-            {{render_field(form.colors, class="form-control", placeholder="Add product colors")}}
-            {{render_field(form.description, class="form-control", placeholder="Add product details", rows="10")}}
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-8">
+            <h2 class="text-center mt-5">Add a product</h2>
+            {% from "_formhelpers.html" import render_field %}
+            <form action="" method="POST" enctype="multipart/form-data">
+                {{render_field(form.name, class="form-control", placeholder="Add product name")}}
+                {{render_field(form.price, class="form-control", placeholder="Add product price")}}
+                {{render_field(form.discount, class="form-control", placeholder="Add product discount")}}
+                {{render_field(form.stock, class="form-control", placeholder="Add product stock")}}
 
-            <div class="container">
-                <div class="row">
-                    <div class="col-4">{{render_field(form.image_1, class="form-control")}}</div>
-                    <div class="col-4">{{render_field(form.image_2, class="form-control")}}</div>
-                    <div class="col-4">{{render_field(form.image_3, class="form-control")}}</div>
+                <label for="brand"> <b>Add a brand</b></label>
+                <select name="brand" id="brand" class="form-control" required>
+                    <option value="">Select a Brand</option>
+                    {% for brand in brands %}
+                        <option value="brand.id">{{brand.name}}</option>
+                    {% endfor %}
+                </select>
+                <label for="category"><b>Add a category</b></label>
+                <select name="category" id="category" class="form-control" required>
+                    <option value="">Select a Category</option>
+                    {% for category in categories %}
+                        <option value="caregory.id">{{category.name}}</option>
+                    {% endfor %}
+                </select>
+
+                {{render_field(form.colors, class="form-control", placeholder="Add product colors")}}
+                {{render_field(form.description, class="form-control", placeholder="Add product details", rows="10")}}
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col">{{render_field(form.image_1, class="form-control")}}</div>
+                        <div class="col">{{render_field(form.image_2, class="form-control")}}</div>
+                        <div class="col">{{render_field(form.image_3, class="form-control")}}</div>
+                    </div>
                 </div>
-            </div>
 
-            <button type="submit" class="btn btn-primary mt-2">Add Product</button>
-        </form>
+                <button type="submit" class="btn btn-primary mt-2">Add Product</button>
+            </form>
+        </div>
+        <div class="col"></div>
     </div>
-    <div class="col"></div>
 </div>
 
 {% endblock content %}
