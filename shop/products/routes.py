@@ -2,7 +2,6 @@ from flask import redirect, render_template, url_for, flash, request, session
 from shop import db, app
 from .models import Brand, Category
 from .forms import Addproducts
-import secrets
 
 
 @app.route('/addbrand', methods=['GET', 'POST'])
