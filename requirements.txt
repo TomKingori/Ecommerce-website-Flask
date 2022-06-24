@@ -2,3 +2,4 @@ flask
 flask-SQLAlchemy
 flask-wtf
 flask-bcrypt
+flask-uploads

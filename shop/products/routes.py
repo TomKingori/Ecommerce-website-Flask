@@ -1,5 +1,5 @@
 from flask import redirect, render_template, url_for, flash, request, session
-from shop import db, app
+from shop import db, app, photos
 from .models import Brand, Category
 from .forms import Addproducts
 
@@ -36,4 +36,8 @@ def addproduct():
    brands = Brand.query.all()
    categories = Category.query.all()
    form = Addproducts(request.form)
+   if request.method ==  'POST':
+      photos.save(request.files.get('Image_1'))
+      photos.save(request.files.get('Image_2'))
+      photos.save(request.files.get('Image_3'))
    return render_template('products/addproduct.html', title='Add Product', form=form, brands=brands, categories=categories)
